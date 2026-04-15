@@ -1,7 +1,7 @@
 import type { Route } from "./+types/home";
 import { useNavigate } from "react-router";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView, animate } from "framer-motion";
 import Nav from "~/components/nav";
 import SectionHeader from "~/components/section-header";
 import { Button } from "~/components/button";
@@ -88,6 +88,40 @@ const MOCK_GALLERY = [
   '/images/gal-5.webp',
   '/images/gal-6.webp',
 ];
+
+function AnimatedCounter({ value, delay = 0 }: { value: string, delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+    
+    const match = value.match(/^(\d+)(.*)$/);
+    if (!match) {
+      if (ref.current) ref.current.textContent = value;
+      return;
+    }
+    
+    const num = parseInt(match[1], 10);
+    const suffix = match[2];
+    
+    const controls = animate(0, num, {
+      delay,
+      duration: 1.5,
+      ease: "easeOut",
+      onUpdate: (v) => {
+        if (ref.current) {
+          ref.current.textContent = Math.round(v) + suffix;
+        }
+      }
+    });
+    
+    return () => controls.stop();
+  }, [isInView, value, delay]);
+
+  const match = value.match(/^(\d+)(.*)$/);
+  return <span ref={ref}>{match ? `0${match[2]}` : value}</span>;
+}
 
 export default function Home() {
   const navigate = useNavigate();
@@ -204,7 +238,9 @@ export default function Home() {
                     className="p-4"
                   >
                     <stat.icon className="size-10 mx-auto text-[#8a1c21] mb-3" />
-                    <h4 className="text-3xl font-bold text-gray-900">{stat.value}</h4>
+                    <h4 className="text-3xl font-bold text-gray-900">
+                      <AnimatedCounter value={stat.value} delay={index * 0.1} />
+                    </h4>
                     <p className="text-gray-600 mt-1">{stat.label}</p>
                   </motion.div>
                 ))}
