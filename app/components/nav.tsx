@@ -103,7 +103,7 @@ export default function Nav() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-gray-600 hover:text-blue-900 focus:outline-none p-2"
               >
-                {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+                {isMobileMenuOpen ? <X className="size-7" /> : <Menu className="size-7" />}
               </button>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function Nav() {
                     key={link.id}
                     onClick={() => navigate(link.id)}
                     className={`block w-full text-left px-4 py-3 text-base font-medium rounded-md ${isActive
-                      ? 'bg-[#fef5c6] text-[#8a1c21] border-l-4 border-[#f27200]'
+                      ? 'bg-[#fef5c6] text-[#8a1c21]'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-[#8a1c21]'
                       }`}
                   >

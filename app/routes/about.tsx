@@ -63,7 +63,7 @@ export default function About() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-              <div className="bg-[#FEF5C6] p-6 rounded-xl border-l-4 border-[#F27200]">
+              <div className="bg-[#FEF5C6] p-6 rounded-xl">
                 <h4 className="text-lg font-bold text-[#8A1C21] mb-2">
                   Our Vision
                 </h4>
@@ -71,7 +71,7 @@ export default function About() {
                   To be the most impactful and united alumni class, empowering members and uplifting Ikeja High School.
                 </p>
               </div>
-              <div className="bg-[#FEF5C6] p-6 rounded-xl border-l-4 border-[#F27200]">
+              <div className="bg-[#FEF5C6] p-6 rounded-xl ">
                 <h4 className="text-lg font-bold text-[#8A1C21] mb-2">
                   Our Mission
                 </h4>
@@ -84,7 +84,7 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-10">
-          <div className="mt-20 bg-[#FEF5C6] p-8 md:p-12 rounded-3xl border-l-8 border-[#F27200] shadow-sm max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-center md:items-start">
+          <div className="mt-20 bg-[#FEF5C6] p-8 md:p-12 rounded-3xl shadow-sm max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-center md:items-start">
             <div className="md:w-1/3 flex justify-center pt-2">
               <div className="size-30 bg-white rounded-full border-[6px] border-[#701619] flex flex-col items-center justify-center shadow-lg">
                 <span className="text-[#701619] font-black text-3xl">IHS</span>
